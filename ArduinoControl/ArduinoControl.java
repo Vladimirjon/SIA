@@ -1,12 +1,10 @@
 package ArduinoControl;
 
 import com.fazecast.jSerialComm.*;
-
 import java.io.OutputStream;
 import java.util.Scanner;
 
 public class ArduinoControl {
-
     private static final String PORT_NAME = "COM3";
     private static final int BAUD_RATE = 9600;
     private static SerialPort serialPort;
@@ -21,7 +19,6 @@ public class ArduinoControl {
             outputStream = serialPort.getOutputStream();
 
             Scanner scanner = new Scanner(System.in);
-
             String userCommand;
 
             do {
@@ -30,13 +27,16 @@ public class ArduinoControl {
 
                 if (serialPort.isOpen() && outputStream != null) {
                     sendCommand(outputStream, userCommand);
+                    outputStream.flush(); // Asegurar que los datos se envíen completamente
                     Thread.sleep(2000);
                 }
             } while (!userCommand.equals("0") && !userCommand.equals("1"));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            serialPort.closePort();
+            if (serialPort != null) {
+                serialPort.closePort();
+            }
         }
     }
 
