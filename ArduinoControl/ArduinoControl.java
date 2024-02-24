@@ -27,7 +27,7 @@ public class ArduinoControl {
 
                 if (serialPort.isOpen() && outputStream != null) {
                     sendCommand(outputStream, userCommand);
-                    outputStream.flush(); // Asegurar que los datos se envíen completamente
+                    outputStream.flush(); 
                     Thread.sleep(2000);
                 }
             } while (!userCommand.equals("0") && !userCommand.equals("1"));
