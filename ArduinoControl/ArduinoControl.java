@@ -7,17 +7,19 @@ import java.util.Scanner;
 
 public class ArduinoControl {
 
-    private static final String PORT_NAME = "COM3"; // Cambia esto al puerto que esté utilizando tu Arduino
+    private static final String PORT_NAME = "COM3";
     private static final int BAUD_RATE = 9600;
+    private static SerialPort serialPort;
+    private static OutputStream outputStream;
 
     public static void main(String[] args) {
-        SerialPort serialPort = SerialPort.getCommPort(PORT_NAME);
+        serialPort = SerialPort.getCommPort(PORT_NAME);
 
         try {
             serialPort.setBaudRate(BAUD_RATE);
             serialPort.openPort();
+            outputStream = serialPort.getOutputStream();
 
-            OutputStream outputStream = serialPort.getOutputStream();
             Scanner scanner = new Scanner(System.in);
 
             String userCommand;
@@ -26,15 +28,13 @@ public class ArduinoControl {
                 System.out.print("Ingrese el comando (0 para regar, 1 para no regar): ");
                 userCommand = scanner.nextLine();
 
-                try {
+                if (serialPort.isOpen() && outputStream != null) {
                     sendCommand(outputStream, userCommand);
                     Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    System.out.println("Error: Ingresa solo 0 o 1.");
                 }
             } while (!userCommand.equals("0") && !userCommand.equals("1"));
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             serialPort.closePort();
         }
