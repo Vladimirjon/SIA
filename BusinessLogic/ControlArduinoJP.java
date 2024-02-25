@@ -1,4 +1,4 @@
-package ArduinoControl;
+package BusinessLogic;
 
 import com.fazecast.jSerialComm.SerialPort;
 import java.util.Scanner;
