@@ -26,10 +26,12 @@ public class ControlRiego {
                         String line = sc.nextLine();
                         value = Integer.parseInt(line);
                         if(value >= 950){
+                            controlDef.sendData(0, port);
+                        }else{
                             controlDef.sendData(1, port);
                         }
                     }
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

@@ -24,7 +24,6 @@ public class ArduinoControlDEF {
             System.out.println("Enviando data: " + input);
             try {
                 port.getOutputStream().write(Integer.toString(input).getBytes());
-                Thread.sleep(1000);
             }catch (Exception e) {
                 e.printStackTrace();
             } finally {
