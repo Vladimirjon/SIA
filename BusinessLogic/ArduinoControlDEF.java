@@ -18,7 +18,7 @@ public class ArduinoControlDEF {
 
     public void sendData(int input, SerialPort port) {
         if (input == 0 || input == 1) {
-            System.out.println("Enviando data: " + input);
+            // System.out.println("Enviando data: " + input);
             try {
                 port.getOutputStream().write(Integer.toString(input).getBytes());
             }catch (Exception e) {

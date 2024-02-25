@@ -19,36 +19,39 @@ public class ControlRiego {
     public void regarAutomatico() {
         port = controlDef.conectionArduino("COM3");
         int value;
-        int data = 1; 
+        boolean isRegando = false;
+
         if (port != null) {
             Scanner sc = new Scanner(port.getInputStream());
             try {
+                controlDef.sendData(1, port);
                 while (true) {
                     if (sc.hasNextLine()) {
                         String line = sc.nextLine();
                         value = Integer.parseInt(line);
                         if(value >= 950){
-                            if (data == 1) {
-                                data = 0;
-                                controlDef.sendData(data, port);
-                            }
+                            if(isRegando == false){
+                                isRegando = true;
+                                System.out.println("Regar");
+                                controlDef.sendData(0, port);
+                            }  
                         }else{
-                            if(data == 0){
-                                data = 1;
-                                controlDef.sendData(data, port);
-                            }
+                            if(isRegando == true){
+                                isRegando = false;
+                                System.out.println("Regar");
+                                controlDef.sendData(1, port);}
                         }
+                        System.out.println("Humedad: "+value);   
                     }
-                    Thread.sleep(100);
+                    Thread.sleep(500);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("No puedo leer");
-                ;
             } finally {
                 sc.close();
                 port.closePort();
-                System.out.println("Puerto Cerrado");
+                //System.out.println("Puerto Cerrado");
             }
         }else{
             System.out.println("No se ha establecido la conexion");
