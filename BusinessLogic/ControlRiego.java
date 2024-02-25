@@ -4,12 +4,16 @@ import java.util.Scanner;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import DataAccess.DTO.DatoRiegoDTO;
+
 public class ControlRiego {
     DatoRiegoBL datoRiego;
     SerialPort port;
   
     
     ArduinoControlDEF controlDef;
+    DatoRiegoBL datoBL = new DatoRiegoBL();
+    DatoRiegoDTO dtDTO;
 
     public ControlRiego() {
         this.controlDef = new ArduinoControlDEF();
@@ -32,13 +36,14 @@ public class ControlRiego {
                         if(value >= 950){
                             if(isRegando == false){
                                 isRegando = true;
-                                System.out.println("Regar");
                                 controlDef.sendData(1, port);
+                                dtDTO = new DatoRiegoDTO(1,value,1,"","");
+                                datoBL.create(dtDTO);
+                                System.out.println("Resgistrado");
                             }  
                         }else{
                             if(isRegando == true){
                                 isRegando = false;
-                                System.out.println("no Regar");
                                 controlDef.sendData(0, port);}
                         }
                         System.out.println("Humedad: "+value);   

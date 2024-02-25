@@ -10,6 +10,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 // import UserInterface.Form.SplashScreenForm;
 
 public class App {
+    
     public static void main(String[] args) {
         
     }
