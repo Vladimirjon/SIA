@@ -26,6 +26,7 @@ public class ControlRiego {
                         value = Integer.parseInt(line);
                         if(value >= 950){
                             controlDef.sendData(0, port);
+                            
                         }else{
                             controlDef.sendData(1, port);
                         }
@@ -34,12 +35,12 @@ public class ControlRiego {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("No se puedo leer");
+                System.out.println("No puedo leer");
                 ;
             } finally {
                 sc.close();
                 port.closePort();
-                System.out.println("Puerto Cerrado.");
+                System.out.println("Puerto Cerrado");
             }
         }else{
             System.out.println("No se ha establecido la conexion");
