@@ -8,7 +8,6 @@ public class ControlRiego {
     SerialPort port;
     
     ArduinoControlDEF controlDef;
-    private int humedad;
 
     public ControlRiego() {
         this.controlDef = new ArduinoControlDEF();

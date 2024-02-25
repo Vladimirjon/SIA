@@ -2,9 +2,6 @@ package BusinessLogic;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 public class ArduinoControlDEF {
 
     public SerialPort conectionArduino(String puerto) {
