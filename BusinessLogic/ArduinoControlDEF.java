@@ -24,7 +24,7 @@ public class ArduinoControlDEF {
             }catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                System.out.println("Puerto Cerrado.");
+                
             }
         }
     }
