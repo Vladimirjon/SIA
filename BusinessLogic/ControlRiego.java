@@ -1,27 +1,56 @@
 package BusinessLogic;
 
-import BusinessLogic.ArduinoControlDEF;
+import java.util.Scanner;
+
 import com.fazecast.jSerialComm.SerialPort;
+
 public class ControlRiego {
     SerialPort port;
-    ArduinoControlDEF controlDef = new ArduinoControlDEF();
+    
+    ArduinoControlDEF controlDef;
     private int humedad;
 
-    public void regarAutomatico(){
-        port = controlDef.conectionArduino("COM3"); //Puerto serie de la placa
-        if(port != null){
-            while (true) {
-                controlDef.readArduino(port);
-                System.out.println("Humedad: " + humedad);
+    public ControlRiego() {
+        this.controlDef = new ArduinoControlDEF();
+    }
+
+    public void regarAutomatico() {
+        port = controlDef.conectionArduino("COM3");
+        
+        int value;
+        if (port != null) {
+            Scanner sc = new Scanner(port.getInputStream());
+            try {
+                while (true) {
+                    if (sc.hasNextLine()) {
+                        String line = sc.nextLine();
+                        value = Integer.parseInt(line);
+                        if(value >= 950){
+                            controlDef.sendData(0, port);
+                        }else{
+                            controlDef.sendData(1, port);
+                        }
+                    }
+                    Thread.sleep(100);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("No se puedo leer");
+                ;
+            } finally {
+                sc.close();
+                port.closePort();
+                System.out.println("Puerto Cerrado.");
             }
+        }else{
+            System.out.println("No se ha establecido la conexion");
         }
+
     }
 
     public static void main(String[] args) {
         ControlRiego ctrl = new ControlRiego();
         ctrl.regarAutomatico();
     }
-
-    //hola
 
 }
