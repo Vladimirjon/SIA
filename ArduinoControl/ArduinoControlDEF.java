@@ -3,7 +3,7 @@ package ArduinoControl;
 import com.fazecast.jSerialComm.SerialPort;
 import java.util.Scanner;
 
-public class ControlArduinoJP {
+public class ArduinoControlDEF {
     public static void main(String[] args) throws Exception {
         // Obtain COM3 port
         SerialPort port = SerialPort.getCommPort("COM3");
@@ -16,33 +16,21 @@ public class ControlArduinoJP {
         }
 
         // User input
-        Scanner scanner = new Scanner(System.in);
         Scanner sc = new Scanner(port.getInputStream());
 
         try {
             while (true) {
-                System.out.print("0 para Regar, 1 para no Regar:  ");
-                int input = scanner.nextInt();
-
-                if (input == 0 || input == 1) {
-                    System.out.println("Enviando data: " + input);
-                    port.getOutputStream().write(Integer.toString(input).getBytes());
-                    Thread.sleep(1000);  // Wait before accepting more inputs
-                } else {
-                    break;
+                if(sc.hasNextLine()){
+                    String line = sc.nextLine();
+                    float value = Float.parseFloat(line);
+                    System.out.println("Received value: " + value);
                 }
+                Thread.sleep(1000);
             }
-
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                float value = Float.parseFloat(line);
-                System.out.println("Received value: " + value);
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            scanner.close();
+            sc.close();
             port.closePort();  // Close the port on exit
             System.out.println("Puerto Cerrado.");
         }
