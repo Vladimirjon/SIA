@@ -7,7 +7,7 @@ import com.fazecast.jSerialComm.SerialPort;
 public class ControlRiego {
     DatoRiegoBL datoRiego;
     SerialPort port;
-    
+  
     
     ArduinoControlDEF controlDef;
 
@@ -20,12 +20,12 @@ public class ControlRiego {
         port = controlDef.conectionArduino("COM3");
         int value;
         boolean isRegando = false;
-
         if (port != null) {
             Scanner sc = new Scanner(port.getInputStream());
             try {
-                controlDef.sendData(1, port);
+                controlDef.sendData(0, port);
                 while (true) {
+
                     if (sc.hasNextLine()) {
                         String line = sc.nextLine();
                         value = Integer.parseInt(line);
@@ -33,17 +33,17 @@ public class ControlRiego {
                             if(isRegando == false){
                                 isRegando = true;
                                 System.out.println("Regar");
-                                controlDef.sendData(0, port);
+                                controlDef.sendData(1, port);
                             }  
                         }else{
                             if(isRegando == true){
                                 isRegando = false;
-                                System.out.println("Regar");
-                                controlDef.sendData(1, port);}
+                                System.out.println("no Regar");
+                                controlDef.sendData(0, port);}
                         }
                         System.out.println("Humedad: "+value);   
                     }
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
