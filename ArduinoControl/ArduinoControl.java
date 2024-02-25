@@ -1,51 +1,40 @@
-package ArduinoControl;
-
-import com.fazecast.jSerialComm.*;
-import java.io.OutputStream;
+import com.fazecast.jSerialComm.SerialPort;
 import java.util.Scanner;
 
-public class ArduinoControl {
-    private static final String PORT_NAME = "COM3";
-    private static final int BAUD_RATE = 9600;
-    private static SerialPort serialPort;
-    private static OutputStream outputStream;
+public class ControlArduinoJP {
+    public static void main(String[] args) throws Exception {
+        
+        SerialPort port = SerialPort.getCommPort("COM3");
+        port.setBaudRate(9600);
 
-    public static void main(String[] args) {
-        serialPort = SerialPort.getCommPort(PORT_NAME);
+        
+        if (!port.openPort()) {
+            System.out.println("No se pudo abrir el puerto COM3.");
+            return;
+        }
 
+        
+        Scanner scanner = new Scanner(System.in);
         try {
-            serialPort.setBaudRate(BAUD_RATE);
-            serialPort.openPort();
-            outputStream = serialPort.getOutputStream();
+            while (true) {
+                System.out.print("0 para Regar, 1 para no Regar:  ");
+                int input = scanner.nextInt();
 
-            Scanner scanner = new Scanner(System.in);
-            String userCommand;
-
-            do {
-                System.out.print("Ingrese el comando (0 para regar, 1 para no regar): ");
-                userCommand = scanner.nextLine();
-
-                if (serialPort.isOpen() && outputStream != null) {
-                    sendCommand(outputStream, userCommand);
-                    outputStream.flush(); 
-                    Thread.sleep(2000);
+                if (input == 0 || input == 1) {
+                    System.out.println("Enviando data: " + input);
+                    String data = Integer.toString(input);
+                    port.getOutputStream().write(data.getBytes());
+                    Thread.sleep(1000);  
+                } else {
+                    break;
                 }
-            } while (!userCommand.equals("0") && !userCommand.equals("1"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (serialPort != null) {
-                serialPort.closePort();
-            }
-        }
-    }
-
-    private static void sendCommand(OutputStream outputStream, String command) {
-        try {
-            String commandWithNewline = command + "\n";
-            outputStream.write(commandWithNewline.getBytes());
-        } catch (Exception e) {
-            e.printStackTrace();
+            scanner.close();
+            port.closePort();  
+            System.out.println("Puerto Cerrado.");
         }
     }
 }
