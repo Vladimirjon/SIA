@@ -1,38 +1,31 @@
 package BusinessLogic;
 
 import com.fazecast.jSerialComm.SerialPort;
-import java.util.Scanner;
 
 public class ArduinoControlDEF {
-    public static void main(String[] args) throws Exception {
-        // Obtain COM3 port
-        SerialPort port = SerialPort.getCommPort("COM3");
-        port.setBaudRate(9600);
 
-        // Try to open the port
+    public SerialPort conectionArduino(String puerto) {
+        SerialPort port = SerialPort.getCommPort(puerto);
+        port.setBaudRate(9600);
         if (!port.openPort()) {
             System.out.println("No se pudo abrir el puerto COM3.");
-            return;
+            return null;
+        } else {
+            System.out.println("Conexion exitosa");
+            return port;
         }
+    }
 
-        // User input
-        Scanner sc = new Scanner(port.getInputStream());
-
-        try {
-            while (true) {
-                if(sc.hasNextLine()){
-                    String line = sc.nextLine();
-                    float value = Float.parseFloat(line);
-                    System.out.println("Received value: " + value);
-                }
-                Thread.sleep(1000);
+    public void sendData(int input, SerialPort port) {
+        if (input == 0 || input == 1) {
+            // System.out.println("Enviando data: " + input);
+            try {
+                port.getOutputStream().write(Integer.toString(input).getBytes());
+            }catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            sc.close();
-            port.closePort();  // Close the port on exit
-            System.out.println("Puerto Cerrado.");
         }
     }
 }
