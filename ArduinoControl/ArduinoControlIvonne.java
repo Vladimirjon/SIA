@@ -2,7 +2,7 @@ package ArduinoControl;
 import com.fazecast.jSerialComm.SerialPort;
 import java.util.Scanner;
 
-public class    ArduinoControlIvonne {
+public class ArduinoControlIvonne {
     public static void main(String[] args) throws Exception {
         // Obtener el puerto COM6
         SerialPort port = SerialPort.getCommPort("COM6");
@@ -38,5 +38,3 @@ public class    ArduinoControlIvonne {
         }
     }
 }
-
-

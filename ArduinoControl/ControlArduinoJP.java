@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class ControlArduinoJP {
     public static void main(String[] args) throws Exception {
         // Obtain COM3 port
+
         SerialPort port = SerialPort.getCommPort("COM3");
         port.setBaudRate(9600);
 
