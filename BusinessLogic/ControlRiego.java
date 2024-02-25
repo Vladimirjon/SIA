@@ -22,4 +22,6 @@ public class ControlRiego {
         ctrl.regarAutomatico();
     }
 
+    //hola
+
 }
