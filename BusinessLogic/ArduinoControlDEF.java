@@ -17,7 +17,7 @@ public class ArduinoControlDEF {
         }
     }
 
-    public int readArduino (SerialPort port){
+    public void  readArduino (SerialPort port){
         int value;
         Scanner sc = new Scanner(port.getInputStream());
         try {
@@ -25,13 +25,13 @@ public class ArduinoControlDEF {
                 if(sc.hasNextLine()){
                     String line = sc.nextLine();
                     value = Integer.parseInt(line);
-                    return value;
+                    System.out.println(value); 
                 }
                 Thread.sleep(1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            System.out.println("No se puedo leer");;
         } finally {
             sc.close();
             port.closePort();

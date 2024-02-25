@@ -11,7 +11,7 @@ public class ControlRiego {
         port = controlDef.conectionArduino("COM3"); //Puerto serie de la placa
         if(port != null){
             while (true) {
-                humedad = controlDef.readArduino(port);
+                controlDef.readArduino(port);
                 System.out.println("Humedad: " + humedad);
             }
         }
