@@ -1,9 +1,7 @@
 package BusinessLogic;
 
 import java.util.Scanner;
-
 import com.fazecast.jSerialComm.SerialPort;
-
 import DataAccess.DTO.DatoRiegoDTO;
 
 public class ControlRiego {
@@ -64,12 +62,39 @@ public class ControlRiego {
             } finally {
                 // sc.close();
                 // port.closePort();
-                // //System.out.println("Puerto Cerrado");
+                // System.out.println("Puerto Cerrado");
             }
         }else{
             System.out.println("No se ha establecido la conexion");
         }
+    }
 
+    public void regarManual (SerialPort port){
+        int value;
+        if (port != null) {
+            Scanner sc = new Scanner(port.getInputStream());
+            try {
+                controlDef.sendData(1, port);
+                Thread.sleep(2000);
+                controlDef.sendData(0, port);
+                    if (sc.hasNextLine()) {
+                        String line = sc.nextLine();
+                        value = Integer.parseInt(line);
+                        dtDTO = new DatoRiegoDTO(1,value,2,"","");
+                        System.out.println("Humedad: "+value);   
+                    }
+                    Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("No puedo leer");
+            } finally {
+                // sc.close();
+                // port.closePort();
+                // System.out.println("Puerto Cerrado");
+            }
+        }else{
+            System.out.println("No se ha establecido la conexion");
+        }
     }
 
     public static void main(String[] args) {
