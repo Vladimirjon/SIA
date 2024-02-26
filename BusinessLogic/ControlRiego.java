@@ -28,8 +28,6 @@ public class ControlRiego {
             Scanner sc = new Scanner(port.getInputStream());
             try {
                 controlDef.sendData(0, port);
-                while (true) {
-
                     if (sc.hasNextLine()) {
                         String line = sc.nextLine();
                         value = Integer.parseInt(line);
@@ -39,7 +37,7 @@ public class ControlRiego {
                                 controlDef.sendData(1, port);
                                 dtDTO = new DatoRiegoDTO(1,value,1,"","");
                                 datoBL.create(dtDTO);
-                                System.out.println("Resgistrado");
+                                System.out.println("Registrado");
                             }  
                         }else{
                             if(isRegando == true){
@@ -49,14 +47,13 @@ public class ControlRiego {
                         System.out.println("Humedad: "+value);   
                     }
                     Thread.sleep(1000);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("No puedo leer");
             } finally {
-                sc.close();
-                port.closePort();
-                //System.out.println("Puerto Cerrado");
+                // sc.close();
+                // port.closePort();
+                // //System.out.println("Puerto Cerrado");
             }
         }else{
             System.out.println("No se ha establecido la conexion");
@@ -66,7 +63,9 @@ public class ControlRiego {
 
     public static void main(String[] args) {
         ControlRiego ctrl = new ControlRiego();
-        ctrl.regarAutomatico();
+        while (true) {
+            ctrl.regarAutomatico();
+        }
     }
 
 }
