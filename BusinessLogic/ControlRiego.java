@@ -48,10 +48,11 @@ public class ControlRiego {
                                 dtDTO = new DatoRiegoDTO(1,value,1,"","");
                                 datoBL.create(dtDTO);
                                 System.out.println("Registrado");
+                                Thread.sleep(2000);
                             }  
                         }else{
                             if(isRegando() == true){
-                                setRegando(true);
+                                setRegando(false);
                                 controlDef.sendData(0, port);}
                         }
                         System.out.println("Humedad: "+value);   
