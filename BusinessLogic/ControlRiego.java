@@ -20,8 +20,8 @@ public class ControlRiego {
         this.datoRiego = new DatoRiegoBL();
     }
 
-    public void regarAutomatico() {
-        port = controlDef.conectionArduino("COM3");
+    public void regarAutomatico(SerialPort port) {
+        
         int value;
         boolean isRegando = false;
         if (port != null) {
@@ -62,9 +62,12 @@ public class ControlRiego {
     }
 
     public static void main(String[] args) {
+        ArduinoControlDEF controlDef = new ArduinoControlDEF();
         ControlRiego ctrl = new ControlRiego();
+        SerialPort port;
+        port = controlDef.conectionArduino("COM3");
         while (true) {
-            ctrl.regarAutomatico();
+            ctrl.regarAutomatico(port);
         }
     }
 
