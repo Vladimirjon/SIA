@@ -13,7 +13,7 @@ public class DatoRiegoBL {
     public List<DatoRiegoDTO> getAll() throws Exception{
         return RiegoDAO.readAll();
     }
-    public DatoRiegoDTO getByIdSexo(int idDato) throws Exception{
+    public DatoRiegoDTO getByIdDato(int idDato) throws Exception{
         Riego = RiegoDAO.readBy(idDato);
         return Riego;
     }
