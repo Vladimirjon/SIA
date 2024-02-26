@@ -14,49 +14,57 @@ public class ControlRiego {
     ArduinoControlDEF controlDef;
     DatoRiegoBL datoBL = new DatoRiegoBL();
     DatoRiegoDTO dtDTO;
+    private boolean isRegando;
+
+
+    public boolean isRegando() {
+        return isRegando;
+    }
+
+    public void setRegando(boolean isRegando) {
+        this.isRegando = isRegando;
+    }
 
     public ControlRiego() {
         this.controlDef = new ArduinoControlDEF();
         this.datoRiego = new DatoRiegoBL();
+        this.isRegando = false;
     }
 
-    public void regarAutomatico() {
-        port = controlDef.conectionArduino("COM3");
+    public void regarAutomatico(SerialPort port) {
+        
         int value;
-        boolean isRegando = false;
         if (port != null) {
             Scanner sc = new Scanner(port.getInputStream());
             try {
                 controlDef.sendData(0, port);
-                while (true) {
-
                     if (sc.hasNextLine()) {
                         String line = sc.nextLine();
                         value = Integer.parseInt(line);
                         if(value >= 950){
-                            if(isRegando == false){
-                                isRegando = true;
+                            if(isRegando() == false){
+                                setRegando(true);
                                 controlDef.sendData(1, port);
                                 dtDTO = new DatoRiegoDTO(1,value,1,"","");
                                 datoBL.create(dtDTO);
-                                System.out.println("Resgistrado");
+                                System.out.println("Registrado");
+                                Thread.sleep(2000);
                             }  
                         }else{
-                            if(isRegando == true){
-                                isRegando = false;
+                            if(isRegando() == true){
+                                setRegando(false);
                                 controlDef.sendData(0, port);}
                         }
                         System.out.println("Humedad: "+value);   
                     }
                     Thread.sleep(1000);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("No puedo leer");
             } finally {
-                sc.close();
-                port.closePort();
-                //System.out.println("Puerto Cerrado");
+                // sc.close();
+                // port.closePort();
+                // //System.out.println("Puerto Cerrado");
             }
         }else{
             System.out.println("No se ha establecido la conexion");
@@ -65,8 +73,13 @@ public class ControlRiego {
     }
 
     public static void main(String[] args) {
+        ArduinoControlDEF controlDef = new ArduinoControlDEF();
         ControlRiego ctrl = new ControlRiego();
-        ctrl.regarAutomatico();
+        SerialPort port;
+        port = controlDef.conectionArduino("COM3");
+        while (true) {
+            ctrl.regarAutomatico(port);
+        }
     }
 
 }
