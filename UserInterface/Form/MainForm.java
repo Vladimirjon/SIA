@@ -20,8 +20,8 @@ public class MainForm extends JFrame{
         customizeComponent(tilteApp);
         pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
         // pnlMenu.btnLogin.addActionListener(     e -> setPanel(new LoginPanel())); 
-        pnlMenu.btnBase.addActionListener(      e -> regadoAutomatico());  
-        pnlMenu.btnRegar.addActionListener(      e -> setPanel(new BasePanel()));  
+        pnlMenu.btnBase.addActionListener(      e -> setPanel(new BasePanel()));  
+        pnlMenu.btnRegar.addActionListener(      e -> regadoAutomatico());  
         // pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
         //agregar
         // pnlMenu.btnTest.addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
