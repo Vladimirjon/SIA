@@ -174,9 +174,9 @@ public class BasePanel  extends JPanel implements ActionListener {
  * FormDesing : pat_mic
  ************************/ 
     private JPLabel 
-            lblTitulo   = new JPLabel("SEXO"),
-            lblIdSexo   = new JPLabel(" Codigo:      "),
-            lblNombre   = new JPLabel("*Descripción: "),
+            lblTitulo   = new JPLabel("REGISTRO DE RIEGOS"),
+            lblIdSexo   = new JPLabel(" Num. Riego :      "),
+            lblNombre   = new JPLabel(" Humedad : "),
             lblTotalReg = new JPLabel(" 0 de 0 ");
     private JPTextBox 
             txtIdSexo   = new JPTextBox(),

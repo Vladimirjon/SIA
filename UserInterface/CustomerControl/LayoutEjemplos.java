@@ -1,6 +1,5 @@
 package UserInterface.CustomerControl;
 
-
 import java.awt.Button;
 import java.awt.Choice;
 import java.awt.Color;
@@ -24,8 +23,8 @@ import javax.swing.border.LineBorder;
 public class LayoutEjemplos {
 
     private JPLabel  
-            lblTitulo = new JPLabel("SEXO"          ), //, Color.BLACK, new Font("MesloLGL Nerd Font", Font.BOLD ,  20)),
-            lblIdSexo = new JPLabel("Codigo:      " ),
+            lblTitulo = new JPLabel("RIEGO"          ), //, Color.BLACK, new Font("MesloLGL Nerd Font", Font.BOLD ,  20)),
+            lblIdSexo = new JPLabel("Analisis:      " ),
             lblNombre = new JPLabel("Descripción: " ),
             lblTotalReg=new JPLabel("  0 de 0  "    );
     private TextField  
@@ -45,49 +44,57 @@ public class LayoutEjemplos {
             pnlTabla  = new JPanel(),
             pnlBtnCRUD= new JPanel(new FlowLayout()),
             pnlBtnPage= new JPanel(new FlowLayout());
-    private Font 
-            fontTilte = new Font("MesloLGL Nerd Font", Font.BOLD ,  20),
-            fontBoton = new Font("MesloLGL Nerd Font", Font.BOLD | Font.CENTER_BASELINE,  11),
-            fontPanel = new Font("MesloLGL Nerd Font", Font.LAYOUT_LEFT_TO_RIGHT | Font.PLAIN, 12);
-    
-             private Border line             = new LineBorder(Color.lightGray);
-    private Border margin           = new EmptyBorder(5, 5, 5, 5);
-    private Border border           = new CompoundBorder(line, margin);
-    private Panel pnl = new Panel();
-    private void  addControls(){
-        //Customize:
-        lblTitulo.setFont(fontTilte);         
-        lblIdSexo.setFont(fontPanel); 
-        lblNombre.setFont(fontPanel); 
-        lblTotalReg.setFont(fontPanel); 
-
-        txtIdSexo.setFont(fontPanel); 
-        txtNombre.setFont(fontPanel); 
-        txtIdSexo.setEditable( false );
-        txtIdSexo.setForeground (Color.darkGray);
-        txtNombre.setForeground (Color.darkGray);
-
-        btnNuevo.setFont(fontBoton);         
-        btnGuardar.setFont(fontBoton); 
-        btnCancelar.setFont(fontBoton); 
-        btnEliminar.setFont(fontBoton); 
-
-        pnlBtnCRUD.add(btnIni);       
-        pnlBtnCRUD.add(btnAnt);  
-        pnlBtnCRUD.add(new JLabel("\u11A2"));      
-        pnlBtnCRUD.add(lblTotalReg);        
-        pnlBtnCRUD.add(new JLabel("\u11A2"));      
-        pnlBtnCRUD.add(btnSig);
-        pnlBtnCRUD.add(btnFin);
-        pnlBtnCRUD.add(new JLabel("\u11A2"));      
-        pnlBtnCRUD.add(btnNuevo);
-        pnlBtnCRUD.add(btnGuardar);
-        //pnlBtnCRUD.add(btnCancelar);
-        pnlBtnCRUD.add(btnEliminar);
-        pnlBtnCRUD.setBorder(border);
-
-        pnlTabla.setBounds(0,0,500,500);
-        pnlTabla.setBorder(border);
+            
+            private Font 
+            fontTitle = new Font("Tahoma", Font.BOLD, 20),
+            fontButton = new Font("Tahoma", Font.BOLD | Font.CENTER_BASELINE, 11),
+            fontPanel = new Font("Tahoma", Font.LAYOUT_LEFT_TO_RIGHT | Font.PLAIN, 12);
+        
+        private Border line = new LineBorder(Color.lightGray);
+        private Border margin = new EmptyBorder(5, 5, 5, 5);
+        private Border border = new CompoundBorder(line, margin);
+        
+        // Set panel foreground color
+        private Color panelForegroundColor = new Color(144, 238, 144); // Greenish-White
+        
+        private Panel pnl = new Panel();
+        
+        private void addControls() {
+            // Customize fonts and colors:
+            lblTitulo.setFont(fontTitle);
+            lblIdSexo.setFont(fontPanel);
+            lblNombre.setFont(fontPanel);
+            lblTotalReg.setFont(fontPanel);
+        
+            txtIdSexo.setFont(fontPanel);
+            txtNombre.setFont(fontPanel);
+            txtIdSexo.setEditable(false);
+            txtIdSexo.setForeground(panelForegroundColor);
+            txtNombre.setForeground(panelForegroundColor);
+        
+            btnNuevo.setFont(fontButton);
+            btnGuardar.setFont(fontButton);
+            btnCancelar.setFont(fontButton);
+            btnEliminar.setFont(fontButton);
+        
+            pnlBtnCRUD.add(btnIni);
+            pnlBtnCRUD.add(btnAnt);
+            pnlBtnCRUD.add(new JLabel("\u11A2"));
+            pnlBtnCRUD.add(lblTotalReg);
+            pnlBtnCRUD.add(new JLabel("\u11A2"));
+            pnlBtnCRUD.add(btnSig);
+            pnlBtnCRUD.add(btnFin);
+            pnlBtnCRUD.add(new JLabel("\u11A2"));
+            pnlBtnCRUD.add(btnNuevo);
+            pnlBtnCRUD.add(btnGuardar);
+            // pnlBtnCRUD.add(btnCancelar);
+            pnlBtnCRUD.add(btnEliminar);
+            pnlBtnCRUD.setBorder(border);
+        
+            pnlTabla.setBounds(0, 0, 500, 500);
+            pnlTabla.setBorder(border);
+            pnlTabla.setForeground(panelForegroundColor);
+        
         
         //Grillado
         pnl.setLayout( new GridBagLayout() );
@@ -119,7 +126,7 @@ public class LayoutEjemplos {
     }
     private void  addControls2(){
         //Customize:
-        lblTitulo.setFont(fontTilte);         
+        lblTitulo.setFont(fontTitle);         
         lblIdSexo.setFont(fontPanel); 
         lblNombre.setFont(fontPanel); 
         lblTotalReg.setFont(fontPanel); 
@@ -130,10 +137,10 @@ public class LayoutEjemplos {
         txtIdSexo.setForeground (Color.darkGray);
         txtNombre.setForeground (Color.darkGray);
 
-        btnNuevo.setFont(fontBoton);         
-        btnGuardar.setFont(fontBoton); 
-        btnCancelar.setFont(fontBoton); 
-        btnEliminar.setFont(fontBoton); 
+        btnNuevo.setFont(fontButton);         
+        btnGuardar.setFont(fontButton); 
+        btnCancelar.setFont(fontButton); 
+        btnEliminar.setFont(fontButton); 
         btnNuevo.setContentAreaFilled(false);
         btnGuardar.setContentAreaFilled(false);
         btnCancelar.setContentAreaFilled(false);

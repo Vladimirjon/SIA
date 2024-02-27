@@ -65,10 +65,10 @@ public class JPPanelSIA extends JPanel implements ActionListener{
     private void showData() {
         boolean datoNull = (datoRiegoDTO == null);
         txtIdDato.setText((datoNull) ? " " : datoRiegoDTO.getIdDato().toString());            
-        txtNombre.setText((datoNull) ? " " : datoRiegoDTO.getHumedadSuelo().toString());
-        txtNombre.setText((datoNull) ? " " : datoRiegoDTO.getIdTipoRiego().toString());
-        txtNombre.setText((datoNull) ? " " : datoRiegoDTO.getFechaCrea());
-        txtNombre.setText((datoNull) ? " " : datoRiegoDTO.getFechaModifica());
+        txtHumedad.setText((datoNull) ? " " : datoRiegoDTO.getHumedadSuelo().toString());
+        txtIdTipodeRiego.setText((datoNull) ? " " : datoRiegoDTO.getIdTipoRiego().toString());
+        txtFechaCrea.setText((datoNull) ? " " : datoRiegoDTO.getFechaCrea());
+        txtFechaModifica.setText((datoNull) ? " " : datoRiegoDTO.getFechaModifica());
         //lblTotalReg.setText(idDato.toString() + " de " + idMaxSexo.toString());
     }
     private void btnNuevoClick(ActionEvent e) {
@@ -93,11 +93,11 @@ public class JPPanelSIA extends JPanel implements ActionListener{
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             
             // if (datoNull)
-            //     datoRiegoDTO = new DatoRiegoBL(txtNombre.getText().toString());
+            //     datoRiegoDTO = new DatoRiegoBL(txtHumedad.getText().toString());
             // else
-            //     datoRiegoDTO.setNombre(txtNombre.getText().toString());
+            //     datoRiegoDTO.setHumedadSuelo(txtHumedad.getText().toString());
 
-            // if(!((datoNull) ? DatoRiegoBL.createSexo(datoRiegoDTO) : DatoRiegoBL.updateSexo(datoRiegoDTO)))
+            // if(!((datoNull) ? datoRiegoBL.create(datoRiegoDTO) : datoRiegoBL.update(datoRiegoDTO)))
             //     JOptionPane.showMessageDialog(this, "Error al guardar...!", "ERROR", JOptionPane.OK_OPTION);
             
             loadData();
@@ -180,12 +180,15 @@ public class JPPanelSIA extends JPanel implements ActionListener{
  ************************/ 
     private JPLabel  
             lblTitulo  = new JPLabel("RIEGO"          ),
-            lblIdSexo  = new JPLabel("Riego:      " ),
-            lblNombre  = new JPLabel("Descripción: " ),
+            lblIdDato  = new JPLabel("Riego:      " ),
+            lblHumedad  = new JPLabel("Humedad " ),
             lblTotalReg= new JPLabel("  0 de 0  "    );
     private JPTextBox  
             txtIdDato  = new JPTextBox (),
-            txtNombre  = new JPTextBox ();
+            txtHumedad  = new JPTextBox (),
+            txtIdTipodeRiego  = new JPTextBox (),
+            txtFechaCrea  = new JPTextBox (),
+            txtFechaModifica  = new JPTextBox ();
     private JPButton  
             btnIni     = new JPButton(" |< "), 
             btnAnt     = new JPButton(" << "),            
@@ -260,11 +263,11 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         gbc.gridwidth=1;    
         add(new JLabel("■ Sección de registro: "), gbc);  
 
-        gbc.gridy = 5;       gbc.gridx=0;     add(lblIdSexo,  gbc);   
+        gbc.gridy = 5;       gbc.gridx=0;     add(lblIdDato,  gbc);   
         gbc.gridy = 5;       gbc.gridx=1;     add(txtIdDato,  gbc);   
 
-        gbc.gridy = 6;       gbc.gridx=0;     add(lblNombre, gbc);        
-        gbc.gridy = 6;       gbc.gridx=1;     add(txtNombre, gbc);
+        gbc.gridy = 6;       gbc.gridx=0;     add(lblHumedad, gbc);        
+        gbc.gridy = 6;       gbc.gridx=1;     add(txtHumedad, gbc);
         gbc.gridy = 6;       gbc.gridx=2;     add(new JLabel("*"), gbc);  
 
         gbc.gridy = 7;       gbc.gridx=0;
