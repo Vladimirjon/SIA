@@ -15,23 +15,23 @@ import UserInterface.IAStyle;
 public class MainForm extends JFrame{
     MenuPanel  pnlMenu = new MenuPanel();
     JPanel     pnlMain = new MainPanel();
+    SerialPort Port;
  
-    public MainForm(String tilteApp) {
+    public MainForm(String tilteApp, SerialPort port) {
         customizeComponent(tilteApp);
+        Port = port;
         pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
         // pnlMenu.btnLogin.addActionListener(     e -> setPanel(new LoginPanel())); 
         pnlMenu.btnBase.addActionListener(      e -> setPanel(new BasePanel()));  
-        pnlMenu.btnRegar.addActionListener(      e -> regadoAutomatico());  
+        pnlMenu.btnRegar.addActionListener(      e -> regadoAutomatico(Port));  
         // pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
         //agregar
         // pnlMenu.btnTest.addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
     }
 
-    private void regadoAutomatico() {
+    private void regadoAutomatico(SerialPort port) {
         ArduinoControlDEF controlDef = new ArduinoControlDEF();
         ControlRiego reg = new ControlRiego();
-        SerialPort port;
-        port = controlDef.conectionArduino("COM3");
         reg.regarManual(port);
     }
 

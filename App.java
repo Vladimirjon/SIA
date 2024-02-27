@@ -2,9 +2,12 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import com.fazecast.jSerialComm.SerialPort;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 
+import BusinessLogic.ArduinoControlDEF;
+import BusinessLogic.ControlRiego;
 import BusinessLogic.DatoRiegoBL;
 import DataAccess.DTO.DatoRiegoDTO;
 
@@ -20,8 +23,6 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         DatoRiegoBL bl = new DatoRiegoBL();
-        DatoRiegoDTO dro = new DatoRiegoDTO(0, 12, 1, "", "");
-        bl.create(dro);
 
                 FlatLightLaf.setup();
                 FlatLightLaf.supportsNativeWindowDecorations();
@@ -32,7 +33,16 @@ public class App {
                 } 
     
        CodeRexScreen.show();
-       MainForm frmMain = new MainForm("SIA by CodeRex");
+       ArduinoControlDEF controlDef = new ArduinoControlDEF();
+
+       SerialPort port;
+        port = controlDef.conectionArduino("COM3");
+       MainForm frmMain = new MainForm("SIA by CodeRex", port);
+        ControlRiego reg = new ControlRiego();
+        
+        while (true) {
+            reg.regarAutomatico(port);
+        }
 
     }
 }
