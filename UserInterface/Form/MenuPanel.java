@@ -66,6 +66,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Component;
 import javax.swing.border.EmptyBorder;
 
 import UserInterface.IAStyle;
@@ -88,14 +89,16 @@ public class MenuPanel extends JPanel {
 
     private void customizeComponent() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(250, getHeight()));
-        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Añadir un borde al panel
+        setPreferredSize(new Dimension(300, getHeight()));
+        setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12)); // Añadir un borde al panel
 
         // Añadir logo
         try {
             Image logo = ImageIO.read(IAStyle.URL_LOGO);
-            logo = logo.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            add(new JLabel(new ImageIcon(logo)));
+            logo = logo.getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+            JLabel logoLabel = new JLabel(new ImageIcon(logo));
+            logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            add(logoLabel);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -122,7 +125,7 @@ public class MenuPanel extends JPanel {
         panel.add(Box.createHorizontalGlue());
         panel.add(button);
         panel.add(Box.createHorizontalGlue());
-        panel.setBorder(BorderFactory.createEmptyBorder(25, 0, 25, 0)); // Añadir un borde al panel de botones
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); // Añadir un borde al panel de botones
         return panel;
     }
 }

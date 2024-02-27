@@ -141,11 +141,11 @@ public class BasePanel  extends JPanel implements ActionListener {
 
         JTable table = new JTable(data, header);
         table.setShowHorizontalLines(true);
-        table.setGridColor(Color.lightGray);
+        table.setGridColor(Color.BLACK);
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
 
-        table.setPreferredScrollableViewportSize(new Dimension(550, 200));
+        table.setPreferredScrollableViewportSize(new Dimension(500, 200));
         table.setFillsViewportHeight(true);
 
         pnlTabla.removeAll();
@@ -175,7 +175,7 @@ public class BasePanel  extends JPanel implements ActionListener {
  ************************/ 
     private JPLabel 
             lblTitulo   = new JPLabel("REGISTRO DE RIEGOS"),
-            lblIdSexo   = new JPLabel(" Num. Riego :      "),
+            lblIdDato   = new JPLabel(" Num. Riego :      "),
             lblNombre   = new JPLabel(" Humedad : "),
             lblTotalReg = new JPLabel(" 0 de 0 ");
     private JPTextBox 
@@ -279,7 +279,7 @@ public class BasePanel  extends JPanel implements ActionListener {
 
         gbc.gridy = 5;
         gbc.gridx = 0;
-        add(lblIdSexo, gbc);
+        add(lblIdDato, gbc);
         gbc.gridy = 5;
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;

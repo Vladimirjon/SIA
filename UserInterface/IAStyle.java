@@ -64,7 +64,7 @@ import javax.swing.border.LineBorder;
 
 public abstract class IAStyle {
     public static final Color COLOR_FONT = new Color(50, 205, 50); // Light Green
-    public static final Color COLOR_FONT_LIGHT = new Color(100, 100, 100);
+    public static final Color COLOR_FONT_LIGHT = new Color(0, 0, 0);
     public static final Color COLOR_CURSOR = Color.green;
     public static final Color COLOR_BORDER = new Color(34, 139, 34);
     public static final Font FONT = new Font("Arial", Font.PLAIN, 14);
@@ -79,7 +79,7 @@ public abstract class IAStyle {
     public static final Cursor CURSOR_DEFAULT = new Cursor(Cursor.DEFAULT_CURSOR);
 
     public static final URL URL_MAIN = IAStyle.class.getResource("/UserInterface/Resource/Img/plantaregada.png");
-    public static final URL URL_LOGO = IAStyle.class.getResource("/UserInterface/Resource/Img/CodeRex.jpg");
+    public static final URL URL_LOGO = IAStyle.class.getResource("/UserInterface/Resource/Img/DINO.png");
     public static final URL URL_SPLASH = IAStyle.class.getResource("/UserInterface/Resource/Img/rexperfecto.jpg");
 
     public static final CompoundBorder createBorderRect() {

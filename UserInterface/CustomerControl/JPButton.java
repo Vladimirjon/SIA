@@ -34,7 +34,7 @@ public class JPButton  extends JButton implements MouseListener {
         setBorderPainted(false);
         setContentAreaFilled(false);
         setForeground(IAStyle.COLOR_FONT);
-        setHorizontalAlignment(SwingConstants.CENTER);
+        setHorizontalAlignment(IAStyle.ALIGNMENT_LEFT);
         setFont(IAStyle.FONT);
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));

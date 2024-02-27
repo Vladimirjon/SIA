@@ -120,7 +120,7 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         
         JTable table  = new JTable(data, header);
         table.setShowHorizontalLines(true);
-        table.setGridColor(Color.lightGray);
+        table.setGridColor(Color.BLACK);
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
 

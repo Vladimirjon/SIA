@@ -48,7 +48,7 @@ public class MainForm extends JFrame{
 
     private void customizeComponent(String tilteApp) {
         setTitle(tilteApp);
-        setSize(930, 800);
+        setSize(800, 500);
         setResizable(false);
         setLocationRelativeTo(null); // Centrar en la pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
