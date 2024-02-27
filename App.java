@@ -2,37 +2,37 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
+
 import BusinessLogic.DatoRiegoBL;
 import DataAccess.DTO.DatoRiegoDTO;
-import UserInterface.GUI.Principal;
 
-// import com.formdev.flatlaf.FlatLightLaf;
-// import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
-// import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
-// import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 
-// import UserInterface.Form.MainForm;
-// import UserInterface.Form.SplashScreenForm;
+import UserInterface.Form.MainForm;
+import UserInterface.Form.CodeRexScreen;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
-        // DatoRiegoBL bl = new DatoRiegoBL();
-        // DatoRiegoDTO dro = new DatoRiegoDTO(0, 12, 1, "", "");
-        // bl.create(dro);
-         JFrame frame = new JFrame("Mi Aplicación");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        DatoRiegoBL bl = new DatoRiegoBL();
+        DatoRiegoDTO dro = new DatoRiegoDTO(0, 12, 1, "", "");
+        bl.create(dro);
 
-        try {
-            Principal panel = new Principal();
-            frame.add(panel);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        frame.pack(); // Ajusta el tamaño del frame automáticamente
-        frame.setSize(600, 400);
-        frame.setVisible(true); 
+                FlatLightLaf.setup();
+                FlatLightLaf.supportsNativeWindowDecorations();
+                try {
+                        UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
+                    } catch (UnsupportedLookAndFeelException e) {
+                    e.printStackTrace();
+                } 
+    
+       CodeRexScreen.show();
+       MainForm frmMain = new MainForm("SIA by CodeRex");
 
     }
 }
