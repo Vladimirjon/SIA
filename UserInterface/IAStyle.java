@@ -78,9 +78,9 @@ public abstract class IAStyle {
     public static final Cursor CURSOR_HAND = new Cursor(Cursor.HAND_CURSOR);
     public static final Cursor CURSOR_DEFAULT = new Cursor(Cursor.DEFAULT_CURSOR);
 
-    public static final URL URL_MAIN = IAStyle.class.getResource("/UserInterface/Resource/Img/plantita.png");
-    public static final URL URL_LOGO = IAStyle.class.getResource("/UserInterface/Resource/Img/CRLogo.png");
-    public static final URL URL_SPLASH = IAStyle.class.getResource("/UserInterface/Resource/Img/DinoInicio.jpg");
+    public static final URL URL_MAIN = IAStyle.class.getResource("/UserInterface/Resource/Img/plantaregada.png");
+    public static final URL URL_LOGO = IAStyle.class.getResource("/UserInterface/Resource/Img/CodeRex.jpg");
+    public static final URL URL_SPLASH = IAStyle.class.getResource("/UserInterface/Resource/Img/rexperfecto.jpg");
 
     public static final CompoundBorder createBorderRect() {
         return BorderFactory.createCompoundBorder(new LineBorder(new Color(144, 238, 144)), new EmptyBorder(5, 5, 5, 5)); // Tranquil Green

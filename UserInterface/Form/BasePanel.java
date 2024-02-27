@@ -145,7 +145,7 @@ public class BasePanel  extends JPanel implements ActionListener {
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
 
-        table.setPreferredScrollableViewportSize(new Dimension(450, 150));
+        table.setPreferredScrollableViewportSize(new Dimension(550, 200));
         table.setFillsViewportHeight(true);
 
         pnlTabla.removeAll();

@@ -1,17 +1,11 @@
 package UserInterface.CustomerControl;
 
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Cursor;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-
 import UserInterface.IAStyle;
-
-import javax.swing.ImageIcon;
 
 public class JPButton  extends JButton implements MouseListener {
     public JPButton(String text){
@@ -23,13 +17,15 @@ public class JPButton  extends JButton implements MouseListener {
 
     public void customizeComponent(String text, String iconPath){ 
         
-        setSize(20, 70);
+        setSize(30, 90);
         addMouseListener(this);
         customizeComponent(text);
-        setBounds(50, 30, 90, 20); 
+        setBounds(60, 70, 100, 30); 
         
         setIcon(new ImageIcon(iconPath));
         setFont(IAStyle.FONT);
+
+        setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
     public void customizeComponent(String text) {
         setText(text);
@@ -38,7 +34,7 @@ public class JPButton  extends JButton implements MouseListener {
         setBorderPainted(false);
         setContentAreaFilled(false);
         setForeground(IAStyle.COLOR_FONT);
-        setHorizontalAlignment(IAStyle.ALIGNMENT_LEFT);
+        setHorizontalAlignment(SwingConstants.CENTER);
         setFont(IAStyle.FONT);
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));
