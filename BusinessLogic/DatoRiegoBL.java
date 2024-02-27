@@ -13,15 +13,15 @@ public class DatoRiegoBL {
     public List<DatoRiegoDTO> getAll() throws Exception{
         return RiegoDAO.readAll();
     }
-    public DatoRiegoDTO getByIdSexo(int idDato) throws Exception{
+    public DatoRiegoDTO getByIdDato(int idDato) throws Exception{
         Riego = RiegoDAO.readBy(idDato);
         return Riego;
     }
-    public boolean create(DatoRiegoDTO sexoDTO) throws Exception{   
-        return RiegoDAO.create(sexoDTO);
+    public boolean create(DatoRiegoDTO riegoDTO) throws Exception{   
+        return RiegoDAO.create(riegoDTO);
     }
-    public boolean update(DatoRiegoDTO sexoDTO) throws Exception{
-        return RiegoDAO.update(sexoDTO);
+    public boolean update(DatoRiegoDTO riegoDTO) throws Exception{
+        return RiegoDAO.update(riegoDTO);
     }
     public boolean delete(int idDato) throws Exception{
         return RiegoDAO.delete(idDato);
