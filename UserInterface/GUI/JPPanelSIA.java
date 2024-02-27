@@ -23,7 +23,7 @@ import UserInterface.CustomerControl.JPLabel;
 import UserInterface.CustomerControl.JPTextBox;
 
 public class JPPanelSIA extends JPanel implements ActionListener{
-    private Integer idDato, idMaxSexo;
+    private Integer idDato, idMaxDato;
     private DatoRiegoBL  datoRiegoBL  = null;
     private DatoRiegoDTO   datoRiegoDTO  = null;
 
@@ -60,7 +60,7 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         idDato      = 1;
         datoRiegoBL      = new DatoRiegoBL();
         datoRiegoDTO        = datoRiegoBL.getByIdDato(idDato);
-        //idMaxSexo   = datoRiegoBL.getMaxIdSexo();
+        //idMaxDato   = datoRiegoBL.getMaxIdSexo();
     }
     private void showData() {
         boolean datoNull = (datoRiegoDTO == null);
@@ -69,7 +69,7 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         txtIdTipodeRiego.setText((datoNull) ? " " : datoRiegoDTO.getIdTipoRiego().toString());
         txtFechaCrea.setText((datoNull) ? " " : datoRiegoDTO.getFechaCrea());
         txtFechaModifica.setText((datoNull) ? " " : datoRiegoDTO.getFechaModifica());
-        //lblTotalReg.setText(idDato.toString() + " de " + idMaxSexo.toString());
+        //lblTotalReg.setText(idDato.toString() + " de " + idMaxDato.toString());
     }
     private void btnNuevoClick(ActionEvent e) {
         datoRiegoDTO = null;
@@ -161,10 +161,10 @@ public class JPPanelSIA extends JPanel implements ActionListener{
             idDato  = 1;
         if(e.getSource() == btnAnt  &&  (idDato>1) )
             idDato--;
-        if(e.getSource() == btnSig  &&  (idDato<idMaxSexo))
+        if(e.getSource() == btnSig  &&  (idDato<idMaxDato))
             idDato++;
         if(e.getSource() == btnFin)
-            idDato = idMaxSexo;
+            idDato = idMaxDato;
 
         // try {
         //     if(e.getSource() == btnGuardar)
@@ -204,8 +204,8 @@ public class JPPanelSIA extends JPanel implements ActionListener{
             pnlBtnCRUD = new JPanel(new FlowLayout()),
             pnlBtnPage = new JPanel(new FlowLayout());
     private Border  
-            line       = new LineBorder(Color.lightGray),
-            margin     = new EmptyBorder(5, 5, 5, 5),
+            line       = new LineBorder(Color.black),
+            margin     = new EmptyBorder(12, 12, 12, 12),
             border     = new CompoundBorder(line, margin);
     
 /************************
@@ -233,21 +233,21 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         pnlBtnCRUD.setBorder(border);
 
         // GridBagConstraints.Separación entre componentes
-        gbc.insets=new Insets(5,5,5,5);    
+        gbc.insets=new Insets(12,12,12,12);    
         
         // GridBagConstraints.ponerComponentes
         gbc.gridy = 0;       gbc.gridx=0;  //| fila,  columna
-        gbc.gridwidth=3;                   //| celdas a unir
+        gbc.gridwidth=6;                   //| celdas a unir
         add(lblTitulo, gbc);               //| agrega el control
 
-        gbc.gridy = 1;       gbc.gridx=0;   
-        gbc.gridwidth=1;                     
+        gbc.gridy = 2;       gbc.gridx=0;   
+        gbc.gridwidth=2;                     
         add(new JLabel("■ Sección de datos: "), gbc);                 
 
         gbc.gridy = 2;       gbc.gridx=0;
-        gbc.gridwidth=3;                   //| celdas a unir
-        gbc.ipady = 150;                   //| tamaño alto
-        gbc.ipadx = 450;                   //| tamaño ancho ... luego se debe restablecer a 1 o 0
+        gbc.gridwidth=5;                   //| celdas a unir
+        gbc.ipady = 200;                   //| tamaño alto
+        gbc.ipadx = 550;                   //| tamaño ancho ... luego se debe restablecer a 1 o 0
         pnlTabla.add(new Label("Loading data..."));
         //pnlTabla.setBorder(border);
         add(pnlTabla, gbc);
