@@ -234,11 +234,11 @@ public class BasePanel  extends JPanel implements ActionListener {
         pnlBtnCRUD.add(btnEliminar);
         pnlBtnCRUD.setBorder(IAStyle.createBorderRect());
 
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(1, 1, 1, 1);
 
         gbc.gridy = 0;
         gbc.gridx = 0;
-        gbc.gridwidth = 2;
+        gbc.gridwidth = 1;
         add(lblTitulo, gbc);
 
         gbc.gridy = 1;
@@ -252,8 +252,8 @@ public class BasePanel  extends JPanel implements ActionListener {
         gbc.gridy = 2;
         gbc.gridx = 0;
         gbc.gridwidth = 3;
-        gbc.ipady = 150;
-        gbc.ipadx = 450;
+        gbc.ipady = 135;
+        gbc.ipadx = 435;
         pnlTabla.add(new Label("Loading data..."));
         add(pnlTabla, gbc);
 
@@ -267,7 +267,7 @@ public class BasePanel  extends JPanel implements ActionListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(Box.createRigidArea(new Dimension(0, 0)), gbc);
 
-        gbc.insets = new Insets(10, 0, 0, 0);  
+        gbc.insets = new Insets(1, 0, 0, 0);  
 
         gbc.gridy = 4;
         gbc.gridx = 0;
@@ -304,7 +304,7 @@ public class BasePanel  extends JPanel implements ActionListener {
         gbc.gridy = 7;
         gbc.gridx = 0;
         gbc.gridwidth = 3;
-        gbc.insets = new Insets(30, 0, 0, 0);
+        gbc.insets = new Insets(2, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(pnlBtnCRUD, gbc);
     }
