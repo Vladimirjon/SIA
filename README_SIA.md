@@ -26,6 +26,10 @@ La funcionalidad clave del *Sistema de Irrigación Automático* radica en la int
 
 <hr style="border: 0; height: 2px; background-color: #eaf7fd;">
 
+ESTANDAR OBLIGATORIO:
+
+CAMELCASE - potencializado con la filosofía de programación "Divide y Vencerás"
+
 
 **Backend y Lógica de Negocio** 
 
