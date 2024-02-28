@@ -1,4 +1,5 @@
---database: SIA.sqlite
+-- database: ../database/SIA.sqlite
+--..database:SIA.sqlite
 DROP TABLE IF EXISTS DatoRiego;
 DROP TABLE IF EXISTS TipodeRiego;
 

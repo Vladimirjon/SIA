@@ -1,14 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="_Y_dve3ekHVDtDZEjBDp" name="Page-1">
-        <mxGraphModel dx="816" dy="427" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1040" dy="466" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="UC01: SIA" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;" parent="1" vertex="1">
                     <mxGeometry x="230" y="110" width="450" height="390" as="geometry"/>
-                </mxCell>
-                <mxCell id="4" value="Configurar dato de humedad para el riego automatico" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="185" width="135" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="Registrar datos de riego en la base de datos" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="480" y="130" width="140" height="70" as="geometry"/>
@@ -20,19 +17,13 @@
                     <mxGeometry x="740" y="190" width="30" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="Consultar datos del riego" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="290" width="120" height="80" as="geometry"/>
+                    <mxGeometry x="320" y="190" width="120" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="Regar manualmente" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="287.5" y="410" width="120" height="70" as="geometry"/>
+                    <mxGeometry x="320" y="310" width="120" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="Regar automaticamente" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="380" width="140" height="70" as="geometry"/>
-                </mxCell>
-                <mxCell id="31" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="11" target="4" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="110" y="380" as="sourcePoint"/>
-                        <mxPoint x="270" y="380" as="targetPoint"/>
-                    </mxGeometry>
+                    <mxGeometry x="430" y="380" width="140" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="11" target="25" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -56,12 +47,6 @@
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="670" y="320" as="sourcePoint"/>
                         <mxPoint x="830" y="320" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="39" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="20" target="4" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="765" y="230" as="sourcePoint"/>
-                        <mxPoint x="650" y="425" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="40" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="20" target="27" edge="1">
