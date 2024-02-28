@@ -21,12 +21,9 @@ public class MainForm extends JFrame{
         customizeComponent(tilteApp);
         Port = port;
         pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
-        // pnlMenu.btnLogin.addActionListener(     e -> setPanel(new LoginPanel())); 
         pnlMenu.btnBase.addActionListener(      e -> setPanel(new BasePanel()));  
         pnlMenu.btnRegar.addActionListener(      e -> regadoAutomatico(Port));  
-        // pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
-        //agregar
-        // pnlMenu.btnTest.addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
+
     }
 
     private void regadoAutomatico(SerialPort port) {
@@ -44,7 +41,6 @@ public class MainForm extends JFrame{
         repaint();
     }
      
-    //JOptionPane.showMessageDialog(this, "Seleccionaste Opción 3");
 
     private void customizeComponent(String tilteApp) {
         setTitle(tilteApp);
@@ -53,7 +49,6 @@ public class MainForm extends JFrame{
         setLocationRelativeTo(null); // Centrar en la pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear un contenedor para los dos paneles usando BorderLayout
         Container container = getContentPane();
         container.setLayout(new BorderLayout());
 
