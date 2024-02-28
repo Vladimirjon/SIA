@@ -166,13 +166,13 @@ public class JPPanelSIA extends JPanel implements ActionListener{
         if(e.getSource() == btnFin)
             idDato = idMaxDato;
 
-        // try {
-        //     if(e.getSource() == btnGuardar)
-        //         btnGuardarClick(e);
-        //     datoRiegoDTO    = DatoRiegoBL.getSexoById(idDato);  
-        //     showData(); 
-        // } catch (Exception ex) {}
-        // System.out.println(e.getActionCommand());
+        try {
+            if(e.getSource() == btnGuardar)
+                btnGuardarClick(e);
+            datoRiegoDTO    = datoRiegoBL.getByIdDato(idDato);  
+            showData(); 
+        } catch (Exception ex) {}
+        System.out.println(e.getActionCommand());
     }
 
 /************************
@@ -205,7 +205,7 @@ public class JPPanelSIA extends JPanel implements ActionListener{
             pnlBtnPage = new JPanel(new FlowLayout());
     private Border  
             line       = new LineBorder(Color.black),
-            margin     = new EmptyBorder(12, 12, 12, 12),
+            margin     = new EmptyBorder(10, 10, 10, 10),
             border     = new CompoundBorder(line, margin);
     
 /************************
