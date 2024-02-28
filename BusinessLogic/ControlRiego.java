@@ -97,14 +97,6 @@ public class ControlRiego {
         }
     }
 
-    public static void main(String[] args) {
-        ArduinoControlDEF controlDef = new ArduinoControlDEF();
-        ControlRiego ctrl = new ControlRiego();
-        SerialPort port;
-        port = controlDef.conectionArduino("COM3");
-        while (true) {
-            ctrl.regarAutomatico(port);
-        }
-    }
+
 
 }

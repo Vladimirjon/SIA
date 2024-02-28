@@ -170,9 +170,6 @@ public class BasePanel  extends JPanel implements ActionListener {
         });
     }
 
-/************************
- * FormDesing : pat_mic
- ************************/ 
     private JPLabel 
             lblTitulo   = new JPLabel("REGISTRO DE RIEGOS"),
             lblIdDato   = new JPLabel(" Num. Riego :      "),
@@ -295,11 +292,7 @@ public class BasePanel  extends JPanel implements ActionListener {
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
         add(txtHumedad, gbc);
 
-        // gbc.gridy = 7;
-        // gbc.gridx = 1;
-        // gbc.gridwidth = 2;
-        // gbc.fill = GridBagConstraints.HORIZONTAL;
-        // add(pnlBtnRow, gbc);
+
 
         gbc.gridy = 7;
         gbc.gridx = 0;

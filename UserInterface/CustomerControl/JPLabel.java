@@ -25,6 +25,5 @@ public class JPLabel extends JLabel{
         setBackground(null);
         setForeground(color);
         setHorizontalAlignment(alignment);
-        //setIcon(new ImageIcon(iconPath));
     }
 }
