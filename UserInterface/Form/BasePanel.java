@@ -50,7 +50,7 @@ public class BasePanel  extends JPanel implements ActionListener {
 
     private void showRow() {
         boolean datoNull = (datoRiegoDTO == null);
-        txtIdSexo.setText((datoNull) ? " " : datoRiegoDTO.getIdDato().toString());
+        txtIdData.setText((datoNull) ? " " : datoRiegoDTO.getIdDato().toString());
         txtHumedad.setText((datoNull) ? " " : datoRiegoDTO.getHumedadSuelo().toString());
         txtIdTipoRiego.setText((datoNull) ? " " : datoRiegoDTO.getIdTipoRiego().toString());
         txtFechaCrea.setText((datoNull) ? " " : datoRiegoDTO.getFechaCrea());
@@ -145,7 +145,7 @@ public class BasePanel  extends JPanel implements ActionListener {
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
 
-        table.setPreferredScrollableViewportSize(new Dimension(500, 200));
+        table.setPreferredScrollableViewportSize(new Dimension(450, 170));
         table.setFillsViewportHeight(true);
 
         pnlTabla.removeAll();
@@ -157,14 +157,14 @@ public class BasePanel  extends JPanel implements ActionListener {
                 int row = table.rowAtPoint(e.getPoint());
                 int col = table.columnAtPoint(e.getPoint());
                 if (row >= 0 && col >= 0) {
-                    String strIdSexo = table.getModel().getValueAt(row, 0).toString();
-                    idDato = Integer.parseInt(strIdSexo);
+                    String strIdDato = table.getModel().getValueAt(row, 0).toString();
+                    idDato = Integer.parseInt(strIdDato);
                     try {
                         datoRiegoDTO = datoRiegoBL.getByIdDato(idDato);
                         showRow();
                     } catch (Exception ignored) {
                     }
-                    System.out.println("Tabla.Selected: " + strIdSexo);
+                    System.out.println("Tabla.Selected: " + strIdDato);
                 }
             }
         });
@@ -176,10 +176,10 @@ public class BasePanel  extends JPanel implements ActionListener {
     private JPLabel 
             lblTitulo   = new JPLabel("REGISTRO DE RIEGOS"),
             lblIdDato   = new JPLabel(" Num. Riego :      "),
-            lblNombre   = new JPLabel(" Humedad : "),
+            lblHumedad   = new JPLabel(" Humedad : "),
             lblTotalReg = new JPLabel(" 0 de 0 ");
     private JPTextBox 
-            txtIdSexo   = new JPTextBox(),
+            txtIdData   = new JPTextBox(),
             txtIdTipoRiego = new JPTextBox(),
             txtHumedad   = new JPTextBox(),
             txtFechaCrea = new  JPTextBox(),
@@ -210,8 +210,8 @@ public class BasePanel  extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         
-        txtIdSexo.setEnabled(false);
-        txtIdSexo.setBorderLine();
+        txtIdData.setEnabled(true);
+        txtIdData.setBorderLine();
         txtHumedad.setBorderLine();
 
         pnlBtnPage.add(btnPageIni);
@@ -284,11 +284,11 @@ public class BasePanel  extends JPanel implements ActionListener {
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER; // Indica que este componente ocupa toda la fila
-        add(txtIdSexo, gbc);
+        add(txtIdData, gbc);
 
         gbc.gridy = 6;
         gbc.gridx = 0;
-        add(lblNombre, gbc);
+        add(lblHumedad, gbc);
         gbc.gridy = 6;
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
